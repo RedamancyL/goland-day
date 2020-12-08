@@ -3,7 +3,7 @@ yum install golang -y
 
 ### 2.环境配置
 查看 golang 安装安装 whereis go
-1）修改配置文件
+修改配置文件
 
 vi /etc/profile 
 

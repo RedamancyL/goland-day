@@ -31,4 +31,26 @@ func main() {
 	for i, v := range s {
 		fmt.Printf("%d %c\n", i, v)
 	}
+
+	// 流程控制之跳出for循环
+
+	// 当i=5的时候跳出for循环
+	fmt.Println("start")
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			break // 跳出for循环
+		}
+		fmt.Println(i)
+	}
+	fmt.Println("over")
+
+	// 当i=5时，跳过此次for循环(不执行for循环内部的打印语句)
+	fmt.Println("start")
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			continue // 继续下一次循环
+		}
+		fmt.Println(i)
+	}
+	fmt.Println("over")
 }

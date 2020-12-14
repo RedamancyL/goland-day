@@ -20,6 +20,7 @@ func main() {
 	fmt.Println(s2 == nil) // false
 
 	//长度和容量
+	// 自己造一个切片也是生成一个数组，数组包装成一个切片
 	fmt.Printf("len(s1):%d cap(s1):%d\n", len(s1), cap(s1))
 	fmt.Printf("len(s1):%d cap(s1):%d\n", len(s2), cap(s2))
 
@@ -29,6 +30,21 @@ func main() {
 	fmt.Println(s3)
 
 	// *切片的容量是指底层数组的容量
-	fmt.Println(cap(s3)) // s3 的容量 7 
+	fmt.Println(cap(s3))                                    // s3 的容量 7
+	fmt.Printf("len(s3):%d cap(s3):%d\n", len(s3), cap(s3)) // len(s3):4 cap(s3):7
 
+	s4 := a1[3:]           									// [7 9 11 13]                         
+	// 底层数组从切片的第一个元素到最后的元素数量
+	fmt.Println(cap(s4))                                    // s4 的容量 4
+	fmt.Printf("len(s4):%d cap(s4):%d\n", len(s4), cap(s4)) // len(s4):4 cap(s4):4
+
+	// 切片再切片
+	s5 := s4[3:]
+	fmt.Printf("len(s5):%d cap(s5):%d\n", len(s5), cap(s5)) // len(s5):1 cap(s5):1
+
+	// 切片是引用类型，都指向了底层的一个数组。
+	// s4
+	fmt.Println("s4 ", s4)   // s4  [7 9 11 13]
+	a1[6] = 1300 // 修改了底层数组的值 
+	fmt.Println("s4 ", s4) 	 // s4  [7 9 11 1300]
 }

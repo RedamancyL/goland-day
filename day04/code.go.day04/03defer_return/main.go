@@ -21,10 +21,30 @@ func f2() (x int) { // 先赋予x返回值5
 		x++ // 修改的x  加1
 	}()
 
-	return 5
+	return 5 // 返回值=x
+}
+
+func f3() (y int) { //
+	x := 5
+	defer func() {
+		x++ //  修改的是x
+	}()
+
+	return x // 返回值 = y = x = 5
+}
+
+func f4() (x int) { //
+	defer func(x int) {
+		x++ // 改变的是函数中的副本
+	}(x)
+
+	return 5 // 返回值 = x = 5
 }
 
 func main() {
 	fmt.Println(f1())
 	fmt.Println(f2())
+	fmt.Println(f3())
+	fmt.Println(f4())
+
 }
